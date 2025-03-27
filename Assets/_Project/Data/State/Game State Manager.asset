@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed399b8fcb60ef45b4915214eb3b130, type: 3}
+  m_Name: Game State Manager
+  m_EditorClassIdentifier: 
+  DeveloperDescription: 
+  states:
+  - {fileID: 11400000, guid: 95e577f298fd9634eaf9909eb9721f4f, type: 2}
+  - {fileID: 11400000, guid: 7a2bef638b7aa9245b8a7145c543ac8f, type: 2}
+  defaultState: {fileID: 11400000, guid: 95e577f298fd9634eaf9909eb9721f4f, type: 2}
+  <CurrentState>k__BackingField: {fileID: 11400000, guid: 95e577f298fd9634eaf9909eb9721f4f, type: 2}
+  <PreviousState>k__BackingField: {fileID: 11400000, guid: 95e577f298fd9634eaf9909eb9721f4f, type: 2}
+  OnChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
