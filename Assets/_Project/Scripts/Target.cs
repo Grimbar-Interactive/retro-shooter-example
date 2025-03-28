@@ -56,7 +56,7 @@ public class Target : MonoBehaviour
         {
             newPosition = new Vector3(Random.Range(-arenaSize.x / 2f, arenaSize.x / 2f),
                 Random.Range(-arenaSize.y / 2f, arenaSize.y / 2f), 0f);
-        } while (Vector3.Distance(transform.position, newPosition) < 3);
+        } while (Vector3.Distance(transform.position, newPosition) < minDistanceChange);
         transform.position = newPosition;
     }
 
