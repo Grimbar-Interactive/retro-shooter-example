@@ -13,6 +13,7 @@ public class GunController : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask shootableLayers;
     [SerializeField] private UnityEvent onExit;
+    [SerializeField] private UnityEvent onShotStartTarget;
 
     [Header("State")]
     [SerializeField] private StateManager gameState;
@@ -76,7 +77,8 @@ public class GunController : MonoBehaviour
 
         if (!Physics.Raycast(ray, out var hit, Mathf.Infinity, shootableLayers))
         {
-            if (gameState.CurrentState == playingState) ammoVariable.Decrement();
+            if (gameState.CurrentState != playingState) return;
+            ammoVariable.Decrement();
             _lightgun.Fire(ammoVariable);
             return;
         }
@@ -84,13 +86,21 @@ public class GunController : MonoBehaviour
         var target = hit.transform.GetComponent<Target>();
         if (target == null)
         {
-            if (gameState.CurrentState == playingState) ammoVariable.Decrement();
+            if (gameState.CurrentState != playingState) return;
+            ammoVariable.Decrement();
             _lightgun.Fire(ammoVariable);
             return;
         }
+
+        if (gameState.CurrentState != playingState)
+        {
+            onShotStartTarget?.Invoke();
+            _lightgun.Fire(ammoVariable.DefaultValue);
+            return;
+        }
         
-        if (gameState.CurrentState == playingState && keepAmmoOnHit == false) ammoVariable.Decrement();
-        
+        if (keepAmmoOnHit == false) ammoVariable.Decrement();
+
         target.ScoreHit(hit);
         _lightgun.Fire(ammoVariable);
     }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 32
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a6e126bc4b4cd42b28bdb617a1b8f7, type: 3}
+  m_Name: Target Hit High
+  m_EditorClassIdentifier: 
+  DeveloperDescription: 
+  Clips:
+  - {fileID: 8300000, guid: cfba9f15f578c914ca7395af9ee75a12, type: 3}
+  - {fileID: 8300000, guid: 0c440323a8dbc5a4a9faf73903f98df2, type: 3}
+  - {fileID: 8300000, guid: c66cbf8550da2b7499c41d8cee4e11cd, type: 3}
+  - {fileID: 8300000, guid: 5f9aa2251e5574c46ac265af334a274f, type: 3}
+  - {fileID: 8300000, guid: 1c1d83d3581947d44b31ffb487091686, type: 3}
+  - {fileID: 8300000, guid: b4c4c1f06f0468a4fba37e4e24aac391, type: 3}
+  - {fileID: 8300000, guid: 03313ed91900b2f43a3e7057d18b89f2, type: 3}
+  volume:
+    Min: 0.6
+    Max: 0.6
+  pitch:
+    Min: 0.9
+    Max: 1.1

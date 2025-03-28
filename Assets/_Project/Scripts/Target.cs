@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using GI.UnityToolkit.Events;
 using GI.UnityToolkit.Variables;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -15,6 +16,12 @@ public class Target : MonoBehaviour
     [SerializeField] private int defaultScoreValue = 5;
     [SerializeField] private List<ScoreRange> scoreRanges;
 
+    [Header("Audio")]
+    [SerializeField] private int highValueThreshold = 50;
+    [SerializeField] private AudioEvent highValueHit;
+    [SerializeField] private AudioEvent lowValueHit;
+    [SerializeField] private AudioSource source;
+
     [Header("References")]
     [SerializeField] private IntVariable scoreVariable;
     
@@ -26,18 +33,28 @@ public class Target : MonoBehaviour
         position.z = 0;
         var distance = Vector3.Distance(hitPoint, position);
 
-        var didScore = false;
+        var addedScore = 0;
         foreach (var range in scoreRanges)
         {
             if (distance > range.Max || distance < range.Min) continue;
-            didScore = true;
+            addedScore = range.ScoreValue;
             scoreVariable.SetValue(scoreVariable + range.ScoreValue);
             break;
         }
 
-        if (didScore == false)
+        if (addedScore == 0)
         {
+            addedScore = defaultScoreValue;
             scoreVariable.SetValue(scoreVariable + defaultScoreValue);
+        }
+
+        if (addedScore >= highValueThreshold)
+        {
+            highValueHit.Play(source);
+        }
+        else
+        {
+            lowValueHit.Play(source);
         }
         
         SetToRandomPosition();
